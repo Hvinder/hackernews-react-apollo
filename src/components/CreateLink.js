@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-const CreateLink = () => {
+const CreateLink = (props) => {
   const [state, setState] = useState({
     description: "",
     url: "",
@@ -38,7 +38,11 @@ const CreateLink = () => {
           placeholder="The URL for the link"
         />
       </div>
-      <Mutation mutation={POST_MUTATION} variables={{ description, url }}>
+      <Mutation
+        mutation={POST_MUTATION}
+        variables={{ description, url }}
+        onCompleted={() => props.history.push("/")}
+      >
         {(postMutation) => <button onClick={postMutation}>Submit</button>}
       </Mutation>
     </div>
