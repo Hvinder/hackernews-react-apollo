@@ -82,7 +82,7 @@ const Login = (props) => {
         </Mutation>
         <div
           className="pointer button"
-          onClick={() => setState({ login: !login })}
+          onClick={() => setState({ ...state, login: !login })}
         >
           {login ? "need to create an account?" : "already have an account?"}
         </div>
